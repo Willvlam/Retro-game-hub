@@ -230,21 +230,27 @@ class Ship {
         this.angle = 0;
         this.velocity = { x: 0, y: 0 };
         this.radius = 15;
-        this.speed = 3.0;
-        this.maxSpeed = 4.5;
-        this.rotationSpeed = 0.1;
-        this.friction = 0.65;
+        this.acceleration = 0.5;
+        this.maxSpeed = 5.5;
+        this.rotationSpeed = 0.15;
+        this.friction = 0.985;
+        this.isThrusting = false;
     }
 
     update(keys, canvasWidth, canvasHeight) {
-        // Rotation
-        if (keys['arrowleft']) this.angle -= this.rotationSpeed;
-        if (keys['arrowright']) this.angle += this.rotationSpeed;
+        // Rotation with smoother feel
+        if (keys['arrowleft'] || keys['a']) {
+            this.angle -= this.rotationSpeed;
+        }
+        if (keys['arrowright'] || keys['d']) {
+            this.angle += this.rotationSpeed;
+        }
 
-        // Acceleration
-        if (keys['arrowup']) {
-            this.velocity.x += Math.cos(this.angle) * this.speed;
-            this.velocity.y += Math.sin(this.angle) * this.speed;
+        // Thrust
+        this.isThrusting = keys['arrowup'] || keys['w'];
+        if (this.isThrusting) {
+            this.velocity.x += Math.cos(this.angle) * this.acceleration;
+            this.velocity.y += Math.sin(this.angle) * this.acceleration;
         }
 
         // Apply max speed limit
@@ -254,7 +260,7 @@ class Ship {
             this.velocity.y = (this.velocity.y / speed) * this.maxSpeed;
         }
 
-        // Apply friction
+        // Apply friction (slight, to maintain arcade feel)
         this.velocity.x *= this.friction;
         this.velocity.y *= this.friction;
 
@@ -306,6 +312,21 @@ class Ship {
         ctx.lineTo(-10, 10);
         ctx.closePath();
         ctx.stroke();
+        
+        // Draw thrust flame
+        if (this.isThrusting) {
+            ctx.strokeStyle = '#ffaa00';
+            ctx.lineWidth = 2;
+            const flameLength = 8 + Math.random() * 4;
+            ctx.beginPath();
+            ctx.moveTo(-5, -4);
+            ctx.lineTo(-5 - flameLength, -4);
+            ctx.moveTo(-5, 0);
+            ctx.lineTo(-5 - flameLength, 0);
+            ctx.moveTo(-5, 4);
+            ctx.lineTo(-5 - flameLength, 4);
+            ctx.stroke();
+        }
         
         ctx.restore();
     }
