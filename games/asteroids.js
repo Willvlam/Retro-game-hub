@@ -230,9 +230,10 @@ class Ship {
         this.angle = 0;
         this.velocity = { x: 0, y: 0 };
         this.radius = 15;
-        this.speed = 5;
+        this.speed = 0.8;
+        this.maxSpeed = 3;
         this.rotationSpeed = 0.2;
-        this.friction = 0.99;
+        this.friction = 0.85;
     }
 
     update(keys, canvasWidth, canvasHeight) {
@@ -244,6 +245,13 @@ class Ship {
         if (keys['arrowup']) {
             this.velocity.x += Math.cos(this.angle) * this.speed;
             this.velocity.y += Math.sin(this.angle) * this.speed;
+        }
+
+        // Apply max speed limit
+        const speed = Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2);
+        if (speed > this.maxSpeed) {
+            this.velocity.x = (this.velocity.x / speed) * this.maxSpeed;
+            this.velocity.y = (this.velocity.y / speed) * this.maxSpeed;
         }
 
         // Apply friction
