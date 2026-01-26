@@ -233,7 +233,7 @@ class Ship {
         this.speed = 1.6;
         this.maxSpeed = 4.5;
         this.rotationSpeed = 0.12;
-        this.friction = 0.85;
+        this.friction = 0.65;
     }
 
     update(keys, canvasWidth, canvasHeight) {
