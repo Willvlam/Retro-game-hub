@@ -7,6 +7,9 @@ function initGames() {
     gameInstances.asteroids = new AsteroidsGame();
     gameInstances.snake = new SnakeGame();
     gameInstances.pong = new PongGame();
+    gameInstances.spaceinvaders = new SpaceInvadersGame();
+    gameInstances.breakout = new BreakoutGame();
+    gameInstances.pacman = new PacManGame();
 }
 
 // Switch between games

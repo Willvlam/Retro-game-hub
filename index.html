@@ -18,6 +18,9 @@
             <button class="nav-btn" data-game="asteroids">Asteroids</button>
             <button class="nav-btn" data-game="snake">Snake</button>
             <button class="nav-btn" data-game="pong">Pong</button>
+            <button class="nav-btn" data-game="spaceinvaders">Space Invaders</button>
+            <button class="nav-btn" data-game="breakout">Breakout</button>
+            <button class="nav-btn" data-game="pacman">Pac-Man</button>
         </nav>
 
         <main id="main-content">
@@ -42,6 +45,21 @@
                             <h3>Pong</h3>
                             <p>Two-player paddle game</p>
                             <button class="play-btn" data-game="pong">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <h3>Space Invaders</h3>
+                            <p>Shoot down the invading aliens!</p>
+                            <button class="play-btn" data-game="spaceinvaders">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <h3>Breakout</h3>
+                            <p>Break all the bricks with your ball!</p>
+                            <button class="play-btn" data-game="breakout">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <h3>Pac-Man</h3>
+                            <p>Eat pellets and avoid the ghosts!</p>
+                            <button class="play-btn" data-game="pacman">Play</button>
                         </div>
                     </div>
                 </div>
@@ -80,12 +98,48 @@
                     <p>P1: W/S | P2: Up/Down | Space: Start</p>
                 </div>
             </div>
+
+            <!-- Space Invaders Game -->
+            <div id="spaceinvaders" class="game-screen">
+                <div class="game-info">
+                    <div class="score">Score: <span id="spaceinvaders-score">0</span></div>
+                </div>
+                <canvas id="spaceInvadersCanvas" width="800" height="600"></canvas>
+                <div class="instructions">
+                    <p>Arrow Keys: Move | Space: Shoot | Game Over: Press R to Restart</p>
+                </div>
+            </div>
+
+            <!-- Breakout Game -->
+            <div id="breakout" class="game-screen">
+                <div class="game-info">
+                    <div class="score">Score: <span id="breakout-score">0</span> | Lives: <span id="breakout-lives">3</span></div>
+                </div>
+                <canvas id="breakoutCanvas" width="600" height="400"></canvas>
+                <div class="instructions">
+                    <p>Arrow Keys: Move Paddle | Game Over: Press R to Restart</p>
+                </div>
+            </div>
+
+            <!-- Pac-Man Game -->
+            <div id="pacman" class="game-screen">
+                <div class="game-info">
+                    <div class="score">Score: <span id="pacman-score">0</span></div>
+                </div>
+                <canvas id="pacmanCanvas" width="400" height="400"></canvas>
+                <div class="instructions">
+                    <p>Arrow Keys: Move | Game Over: Press R to Restart</p>
+                </div>
+            </div>
         </main>
     </div>
 
     <script src="games/asteroids.js"></script>
     <script src="games/snake.js"></script>
     <script src="games/pong.js"></script>
+    <script src="games/spaceinvaders.js"></script>
+    <script src="games/breakout.js"></script>
+    <script src="games/pacman.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
