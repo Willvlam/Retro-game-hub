@@ -230,9 +230,9 @@ class Ship {
         this.angle = 0;
         this.velocity = { x: 0, y: 0 };
         this.radius = 15;
-        this.speed = 0.8;
-        this.maxSpeed = 3;
-        this.rotationSpeed = 0.2;
+        this.speed = 1.1;
+        this.maxSpeed = 3.8;
+        this.rotationSpeed = 0.15;
         this.friction = 0.85;
     }
 
