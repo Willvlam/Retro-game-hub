@@ -21,6 +21,7 @@
             <button class="nav-btn" data-game="spaceinvaders">Space Invaders</button>
             <button class="nav-btn" data-game="breakout">Breakout</button>
             <button class="nav-btn" data-game="pacman">Pac-Man</button>
+            <button class="nav-btn" data-game="donkeykong">Donkey Kong</button>
         </nav>
 
         <main id="main-content">
@@ -61,12 +62,21 @@
                             <p>Eat pellets and avoid the ghosts!</p>
                             <button class="play-btn" data-game="pacman">Play</button>
                         </div>
+                        <div class="game-card">
+                            <h3>Donkey Kong</h3>
+                            <p>Escape the falling barrels!</p>
+                            <button class="play-btn" data-game="donkeykong">Play</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Asteroids Game -->
             <div id="asteroids" class="game-screen">
+                <div class="game-controls">
+                    <button class="fullscreen-btn" data-game-screen="asteroids" title="Fullscreen">⛶</button>
+                    <button class="leaderboard-btn" onclick="toggleLeaderboard('asteroids')" title="Leaderboard">🏆</button>
+                </div>
                 <div class="game-info">
                     <div class="score">Score: <span id="asteroids-score">0</span></div>
                     <div class="lives">Lives: <span id="asteroids-lives">3</span></div>
@@ -79,6 +89,10 @@
 
             <!-- Snake Game -->
             <div id="snake" class="game-screen">
+                <div class="game-controls">
+                    <button class="fullscreen-btn" data-game-screen="snake" title="Fullscreen">⛶</button>
+                    <button class="leaderboard-btn" onclick="toggleLeaderboard('snake')" title="Leaderboard">🏆</button>
+                </div>
                 <div class="game-info">
                     <div class="score">Score: <span id="snake-score">0</span></div>
                 </div>
@@ -90,6 +104,10 @@
 
             <!-- Pong Game -->
             <div id="pong" class="game-screen">
+                <div class="game-controls">
+                    <button class="fullscreen-btn" data-game-screen="pong" title="Fullscreen">⛶</button>
+                    <button class="leaderboard-btn" onclick="toggleLeaderboard('pong')" title="Leaderboard">🏆</button>
+                </div>
                 <div class="game-info">
                     <div class="score">Player 1: <span id="pong-score1">0</span> | Player 2: <span id="pong-score2">0</span></div>
                 </div>
@@ -101,6 +119,10 @@
 
             <!-- Space Invaders Game -->
             <div id="spaceinvaders" class="game-screen">
+                <div class="game-controls">
+                    <button class="fullscreen-btn" data-game-screen="spaceinvaders" title="Fullscreen">⛶</button>
+                    <button class="leaderboard-btn" onclick="toggleLeaderboard('spaceinvaders')" title="Leaderboard">🏆</button>
+                </div>
                 <div class="game-info">
                     <div class="score">Score: <span id="spaceinvaders-score">0</span></div>
                 </div>
@@ -112,6 +134,10 @@
 
             <!-- Breakout Game -->
             <div id="breakout" class="game-screen">
+                <div class="game-controls">
+                    <button class="fullscreen-btn" data-game-screen="breakout" title="Fullscreen">⛶</button>
+                    <button class="leaderboard-btn" onclick="toggleLeaderboard('breakout')" title="Leaderboard">🏆</button>
+                </div>
                 <div class="game-info">
                     <div class="score">Score: <span id="breakout-score">0</span> | Lives: <span id="breakout-lives">3</span></div>
                 </div>
@@ -123,6 +149,10 @@
 
             <!-- Pac-Man Game -->
             <div id="pacman" class="game-screen">
+                <div class="game-controls">
+                    <button class="fullscreen-btn" data-game-screen="pacman" title="Fullscreen">⛶</button>
+                    <button class="leaderboard-btn" onclick="toggleLeaderboard('pacman')" title="Leaderboard">🏆</button>
+                </div>
                 <div class="game-info">
                     <div class="score">Score: <span id="pacman-score">0</span></div>
                 </div>
@@ -131,7 +161,45 @@
                     <p>Arrow Keys: Move | Game Over: Press R to Restart</p>
                 </div>
             </div>
+
+            <!-- Donkey Kong Game -->
+            <div id="donkeykong" class="game-screen">
+                <div class="game-controls">
+                    <button class="fullscreen-btn" data-game-screen="donkeykong" title="Fullscreen">⛶</button>
+                    <button class="leaderboard-btn" onclick="toggleLeaderboard('donkeykong')" title="Leaderboard">🏆</button>
+                </div>
+                <canvas id="gameCanvas" width="800" height="600"></canvas>
+                <div class="instructions">
+                    <p>Arrow Keys: Move | Space: Jump | Press ENTER to Start</p>
+                </div>
+            </div>
         </main>
+
+        <!-- Leaderboard Overlay -->
+        <div id="leaderboard-overlay" class="leaderboard-overlay">
+            <div class="leaderboard-panel">
+                <h2 id="leaderboard-game-title">LEADERBOARD</h2>
+                
+                <div id="leaderboard-content">
+                    <!-- Leaderboard content will be inserted here -->
+                </div>
+
+                <div id="name-input-section" class="name-input-section" style="display: none;">
+                    <div id="current-score" class="current-score"></div>
+                    <p style="color: #00ff00; margin: 15px 0;">ENTER YOUR NAME:</p>
+                    <input 
+                        type="text" 
+                        id="player-name-input" 
+                        class="player-name-input" 
+                        maxlength="4" 
+                        placeholder="____"
+                    >
+                    <button id="submit-name-btn" class="submit-name-btn">SUBMIT</button>
+                </div>
+
+                <button class="close-leaderboard-btn" onclick="hideLeaderboard()">CLOSE</button>
+            </div>
+        </div>
     </div>
 
     <script src="games/asteroids.js"></script>
@@ -140,6 +208,8 @@
     <script src="games/spaceinvaders.js"></script>
     <script src="games/breakout.js"></script>
     <script src="games/pacman.js"></script>
+    <script src="games/donkeykong.js"></script>
+    <script src="leaderboard.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

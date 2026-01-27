@@ -53,6 +53,26 @@ function switchGame(gameName) {
     currentGame = gameName;
 }
 
+// Fullscreen functionality
+function toggleFullscreen(gameScreenId) {
+    const element = document.getElementById(gameScreenId);
+    if (!element) return;
+
+    const isFullscreen = document.fullscreenElement === element;
+    
+    if (isFullscreen) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    } else {
+        if (element.requestFullscreen) {
+            element.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable fullscreen: ${err.message}`);
+            });
+        }
+    }
+}
+
 // Event listeners
 document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -63,6 +83,14 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
 document.querySelectorAll('.play-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         switchGame(e.target.dataset.game);
+    });
+});
+
+document.querySelectorAll('.fullscreen-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const gameScreenId = e.target.dataset.gameScreen;
+        toggleFullscreen(gameScreenId);
     });
 });
 

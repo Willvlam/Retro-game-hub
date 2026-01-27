@@ -80,10 +80,212 @@ header p {
     width: 100%;
     max-width: 900px;
     text-align: center;
+    position: relative;
 }
 
 .game-screen.active {
     display: block;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.fullscreen-btn {
+    padding: 8px 12px;
+    background-color: rgba(0, 255, 0, 0.3);
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+.fullscreen-btn:hover {
+    background-color: rgba(0, 255, 0, 0.5);
+    box-shadow: 0 0 10px #00ff00;
+    transform: scale(1.1);
+}
+
+.fullscreen-btn:active {
+    transform: scale(0.95);
+}
+
+.leaderboard-btn {
+    padding: 8px 12px;
+    background-color: rgba(255, 215, 0, 0.3);
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+.leaderboard-btn:hover {
+    background-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 10px #ffd700;
+    transform: scale(1.1);
+}
+
+.leaderboard-btn:active {
+    transform: scale(0.95);
+}
+
+/* Leaderboard Overlay */
+.leaderboard-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.leaderboard-panel {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%);
+    border: 3px solid #ffd700;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 30px #ffd700;
+}
+
+.leaderboard-panel h2 {
+    color: #ffd700;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #ffd700;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1em;
+}
+
+.leaderboard-table th {
+    background-color: rgba(0, 255, 0, 0.2);
+    color: #00ffff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.leaderboard-table tr:nth-child(even) {
+    background-color: rgba(0, 255, 0, 0.05);
+}
+
+.leaderboard-table tr:hover {
+    background-color: rgba(0, 255, 0, 0.15);
+}
+
+.name-input-section {
+    display: none;
+    margin: 30px 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+}
+
+.current-score {
+    color: #ffd700;
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.player-name-input {
+    display: block;
+    width: 200px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #000;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    border-radius: 3px;
+}
+
+.player-name-input::placeholder {
+    color: #00ff00;
+    opacity: 0.5;
+}
+
+.player-name-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00ff00;
+    border-color: #00ffff;
+}
+
+.submit-name-btn {
+    display: block;
+    margin: 15px auto;
+    padding: 10px 30px;
+    background-color: #00ff00;
+    color: #1a1a2e;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 1em;
+    transition: all 0.3s;
+    border-radius: 3px;
+}
+
+.submit-name-btn:hover {
+    background-color: #00ffff;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+.close-leaderboard-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 30px;
+    background-color: rgba(255, 215, 0, 0.3);
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 1em;
+    transition: all 0.3s;
+    border-radius: 3px;
+}
+
+.close-leaderboard-btn:hover {
+    background-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 15px #ffd700;
+    transform: scale(1.05);
 }
 
 .home-content h2 {
