@@ -110,12 +110,14 @@ class SnakeGame {
         if (newHead.x < 0 || newHead.x >= this.canvas.width / this.gridSize ||
             newHead.y < 0 || newHead.y >= this.canvas.height / this.gridSize) {
             this.gameOver = true;
+            showLeaderboard('snake', this.score);
             return;
         }
 
         // Check self collision
         if (this.snake.some(s => s.x === newHead.x && s.y === newHead.y)) {
             this.gameOver = true;
+            showLeaderboard('snake', this.score);
             return;
         }
 

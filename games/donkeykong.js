@@ -138,6 +138,7 @@ function update() {
       lives--;
       if (lives <= 0) {
         gameState = GameState.GAME_OVER;
+        showLeaderboard('donkeykong', score);
       } else {
         resetLevel();
       }
@@ -223,6 +224,7 @@ function update() {
         lives--;
         if (lives <= 0) {
           gameState = GameState.GAME_OVER;
+          showLeaderboard('donkeykong', score);
         } else {
           resetLevel();
         }

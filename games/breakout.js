@@ -136,6 +136,7 @@ class BreakoutGame {
             this.lives--;
             if (this.lives <= 0) {
                 this.gameOver = true;
+                showLeaderboard('breakout', this.score);
             } else {
                 this.resetBall();
             }

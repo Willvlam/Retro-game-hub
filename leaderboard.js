@@ -29,7 +29,9 @@ class LeaderboardManager {
         }
 
         const leaderboard = this.leaderboards[gameName];
-        leaderboard.push({ name: playerName, score: score });
+        // Ensure score is a number
+        const numericScore = Number(score) || 0;
+        leaderboard.push({ name: playerName, score: numericScore });
         leaderboard.sort((a, b) => b.score - a.score);
         
         // Keep only top 3
@@ -43,7 +45,8 @@ class LeaderboardManager {
         if (leaderboard.length < 3) {
             return true;
         }
-        return score > leaderboard[leaderboard.length - 1].score;
+        // Allow equal scores to qualify (ties allowed)
+        return Number(score) >= leaderboard[leaderboard.length - 1].score;
     }
 
     clearLeaderboard(gameName) {

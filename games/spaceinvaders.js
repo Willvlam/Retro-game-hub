@@ -134,6 +134,7 @@ class SpaceInvadersGame {
             // Check if enemy reached bottom
             if (enemy.y > this.canvas.height) {
                 this.gameOver = true;
+                showLeaderboard('spaceinvaders', this.score);
             }
         }
         

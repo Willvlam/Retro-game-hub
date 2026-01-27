@@ -158,9 +158,10 @@ class AsteroidsGame {
             if (this.checkCollision(this.ship, this.asteroids[i])) {
                 this.lives--;
                 this.updateUI();
-                if (this.lives <= 0) {
-                    this.gameOver = true;
-                } else {
+                    if (this.lives <= 0) {
+                        this.gameOver = true;
+                        showLeaderboard('asteroids', this.score);
+                    } else {
                     this.ship = new Ship(this.canvas.width / 2, this.canvas.height / 2);
                 }
             }

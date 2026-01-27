@@ -162,6 +162,7 @@ class PacManGame {
             // Check collision with Pac-Man
             if (ghost.gridX === this.pacman.gridX && ghost.gridY === this.pacman.gridY) {
                 this.gameOver = true;
+                showLeaderboard('pacman', this.score);
             }
         }
     }
