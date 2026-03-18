@@ -30,7 +30,7 @@
                 <div class="home-content">
                     <h2>Welcome to Retro Game Hub</h2>
                     <p>Select a game from the menu above to get started!</p>
-                    
+
                     <div class="games-grid">
                         <div class="game-card">
                             <h3>Asteroids</h3>
@@ -179,19 +179,19 @@
         <div id="leaderboard-overlay" class="leaderboard-overlay">
             <div class="leaderboard-panel">
                 <h2 id="leaderboard-game-title">LEADERBOARD</h2>
-                
+
                 <div id="leaderboard-content">
-                    <!-- Leaderboard content will be inserted here -->
+                    <!-- Leaderboard content inserted here -->
                 </div>
 
                 <div id="name-input-section" class="name-input-section" style="display: none;">
                     <div id="current-score" class="current-score"></div>
                     <p style="color: #00ff00; margin: 15px 0;">ENTER YOUR NAME:</p>
-                    <input 
-                        type="text" 
-                        id="player-name-input" 
-                        class="player-name-input" 
-                        maxlength="4" 
+                    <input
+                        type="text"
+                        id="player-name-input"
+                        class="player-name-input"
+                        maxlength="4"
                         placeholder="____"
                     >
                     <button id="submit-name-btn" class="submit-name-btn">SUBMIT</button>
@@ -202,6 +202,7 @@
         </div>
     </div>
 
+    <!-- Game scripts -->
     <script src="games/asteroids.js"></script>
     <script src="games/snake.js"></script>
     <script src="games/pong.js"></script>
@@ -209,6 +210,12 @@
     <script src="games/breakout.js"></script>
     <script src="games/pacman.js"></script>
     <script src="games/donkeykong.js"></script>
+
+    <!-- Firebase SDK (compat build — no module bundler required) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+    <!-- App scripts -->
     <script src="leaderboard.js"></script>
     <script src="main.js"></script>
 </body>
